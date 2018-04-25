@@ -1,89 +1,79 @@
 <personPanel>
-  <div class="panel">
-    <aside class="sideBar">
-      <div class="head">
-        <img src="./img/LOGO.png" alt="logo">
-      </div>
-      <ul class="sidebar-middle">
-        <li>Panel1</li>
-        <li>Panel2</li>
-        <li>Panel3</li>
-        <li>Panel4</li>
-      </ul>
-      <button class="logOut" onclick={logOut}>Log Out</button>
-    </aside>
+  <section class="wrap">
+    <panel-sidebar class="sidebar"></panel-sidebar>
     <main>
-      <div class="head">
-        <img src={this.parent.user.photoURL} alt={this.parent.user.displayName}>
-         <span class="head-username">Hi, {this.parent.user.displayName} !</span>
-      </div>
+      <panel-head></panel-head>
+      <panelHome if={ subpage === `${this.uid}/home` }></panelHome>
+      <panel-product if={ subpage === `${this.uid}/product` }></panel-product>
     </main>
-  </div>
+    <panel-user-card if={usercard}></panel-user-card>
+  </section>
 
   <script>
     var that = this;
-    logOut() {
-        firebase.auth().signOut().then(function () {
-          // Sign-out successful.
-        }).catch(function (error) {
-          // An error happened.
-        });
-      }
+    this.subpage = 'home';
+    this.uid = this.parent.user.uid; //obtain the user id and transform it into the unique subpage URL
+    this.userInfo;
+    this.currentPage; //obtain the current page name
+    
+    var subRoute = route.create();
+    subRoute(`${this.uid}/*`, function(page) {
+      that.subpage = that.uid + "/" + page;
+      that.currentPage = page;
+      that.update();
+    })
+    subRoute(this.uid, function(page) {
+      that.subpage = that.uid + '/home';
+      that.currentPage = 'home';
+      that.update();
+    })
 
-    this.on('mount', function() {
-      firebase.auth().onAuthStateChanged(function (userObj) {
-        that.parent.user = firebase.auth().currentUser;
-        that.parent.update();
+    this.on('mount', function(){
+      route.exec();
+      
+
+//---------------------------very Critical Step-------------------------------------//      
+     //do query from database to get the right user info
+      careGuruRef.orderByKey().equalTo(that.uid).on('value', function(e) {
+        var data = Object.values(e.val())[0];       
+        that.userInfo = data;
+        // that.update();
+        that.tags.panelhome.userInfo = data; // pass the data to the child component for later use
+        that.tags.panelhome.update();
       })
     })
+
+    this.on('unmount', function() {
+      subRoute.stop();
+    })
+
   </script>
 
+
   <style>
-    .panel {
+    .wrap {
       display: flex;
-
-    }
-
-    .sideBar {
-      flex-basis: 280px;
-      background: #222;
-      height: 100vh;
-    } 
-    .sideBar .head {
-      text-align: center;
-      padding: 20px 0;
-    }
-    .sideBar .head img {
-      width: 50px;
-      height: auto;
-    }
-
-    .sidebar-middle {
       width: 100%;
-      color: #fff;
-      padding: 20px 0;
-      
-    }
-    .sidebar-middle li {
-      list-style: none;
-      padding: 10px 0 10px 49px;
-      transition: all .3s;
-      cursor: pointer;
-    }
-    .sidebar-middle li:hover {
-      background: #414B60;
+      height: 100%;
     }
 
-    main {
-      flex: 1 1 auto;
-      background: lightblue;
+    .wrap .sidebar, .wrap main {
+      flex: 1 1;
+      background: #ccc;
     }
-    main .head img {
-      width: 50px;
-      border-radius: 50%;
-      padding: 30px;
-      vertical-align: middle;
+    
+    .wrap .sidebar{
+      max-width: 60px;
+      background-color: #fff;
+      position: relative;
+      box-shadow: 3px 0 15px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .wrap main {
+      background-color: #F5F6FA;
     }
 
   </style>
+
+
 </personPanel>

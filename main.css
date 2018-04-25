@@ -81,6 +81,23 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+.tobeanimate {
+    /* transition: all 2s; */
+    opacity: 0;
+}
+
+@keyframes slideIn{
+    from {
+        transform: translateY(120px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
 
 
 
@@ -220,4 +237,124 @@ body::-webkit-scrollbar-thumb {
     left: 0;
     right: 0;
     margin: auto;
+}
+
+.panel-main-wrap {
+    overflow: auto;
+    height: 100%;
+}
+
+.wrap-anime {
+    animation: slideIn ease-in-out 1s forwards;
+}
+
+.panel-main-wrap {
+    padding: 3em 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.animate-out {
+    animation: slide-out .4s ease-in-out forwards;
+}
+@keyframes slide-out {
+    to {opacity: 0; transform: translateY(50px)}
+}
+
+
+
+.piece-wrap .fa-star.starred {
+    color: #FFC748;
+}
+
+.important {
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    position: relative;
+    transform: translateX(10px);
+    cursor: pointer;
+    background: transparent;
+}
+.important:hover {
+    background: #fff;
+    color: #DE838A;
+    box-shadow: 3px 3px 10px 0 rgba(255, 255, 255, 0.3), -3px -3px 10px 0 rgba(255, 255, 255, 0.3);
+}
+
+tobeanimate {
+    /* transition: all 2s; */
+    opacity: 0;
+}
+
+.slideIn {
+    /* opacity: 1; */
+    animation: slideIn ease-in-out 1.3s forwards;
+}
+
+@keyframes slideIn{
+    from {
+        transform: translateY(120px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* responsive design on mobile */
+@media (max-width: 450px) {
+
+    /* in the home page section */
+    .header > .main-inner > .clearfix > .logo > a > img {
+        height: 70%;
+        padding: 5px 0;
+        width: auto;
+    }
+
+   /* in the panel home section */
+    .wrap {
+        flex-direction: column;
+    }
+
+    .wrap .sidebar {
+        max-width: unset !important;
+        width: 100%;
+        flex-grow: initial !important;
+    }
+    .wrap .sidebar ul{
+        display: flex;
+        justify-content: space-around;
+    }
+    .wrap .sidebar ul li{
+        padding: 7px 5px;
+        vertical-align: middle;
+    }
+    
+    .wrap .sidebar ul > li.activeSideBar::after{ 
+        height: 2px;
+        width: 100%;
+        bottom: -40%;
+    }
+    
+    .home-wrap > .wrap {
+        display: block;
+        height: calc(100% - 110px);
+    }
+
+    .info-wrap {
+        display: block;
+        padding: 0;
+    }
+
 }

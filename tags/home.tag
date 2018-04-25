@@ -1,14 +1,14 @@
 <home>
-    <header page={this.opts.page}>
+    <home-header page={this.opts.page}>
       <div class="head-middle">
-        <h1>Introducing Insurance</h1>
-        <p>It's tiem to say goodbay to confusion</p>
+        <h1>CareGuru</h1>
+        <p>We help you learn to get health care in the U.S.</p>
         <button class="playBt" onclick={playVideo}>
           <i class="fa fa-play-circle"></i>
           <span>Watch Video</span>
         </button>
       </div>
-    </header>
+    </home-header>
     <div if={videoPlay} ref='videoPlay'>
       <videoPlay></videoPlay>
     </div>
@@ -16,7 +16,9 @@
     <footerWave></footerWave>
 
   <script>
-     
+    this.on('mount', function() {
+      detectScroll();
+    })
   </script>
 
   <style>

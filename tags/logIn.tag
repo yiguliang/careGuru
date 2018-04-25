@@ -10,7 +10,7 @@
      <div class="login-info">
       <p class="close"><i class="fa fa-close" onclick = {close}></i></p>
       <h2>Login In</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, vel.</p>
+      <p>Login with your account or your Google account to access the full website</p>
       <form action="">
         <span><i class="fa fa-user"></i></span><input type="text" placeholder="username"><br>
         <span><i class="fa fa-key"></i></span><input type="password" placeholder="password" id="pass">
@@ -24,6 +24,7 @@
 
 
   <script>
+    var that = this;
     close() {
       this.parent.loginPanel = false;
       this.parent.update();
@@ -35,8 +36,50 @@
         // The signed-in user info.
         var user = result.user;
         // ...
-        that.parent.user = user;
-        that.parent.update();
+        route(user.uid);
+
+        //should detect whether the uer already exist there in the firebase, otherwise it's gonna overwrite previours data
+        var ifNewUser = true;
+        var existedUser = undefined;
+        var existedUserId = undefined;
+
+        careGuruRef.on('value', (snapshot)=>{
+          // console.log();
+          userIds = Object.keys(snapshot.val());
+          userIds.forEach((i)=>{
+            if(user.uid === i) {
+              ifNewUser = false;
+              console.log('this is a existed user');
+              existedUserId = i;
+              return
+            }
+          })
+        }).then(
+          function() {
+            if (ifNewUser) {
+              //initialize user info object
+              console.log('this is a new user')
+              var userInfo = {
+                name: user.displayName,
+                uid: user.uid,
+                profile: user.photoURL,
+                firstLogin: true,
+                surveyData: null,  //data can't be undefined, otherwise can't be pushed to firebase
+                starredArticle: null
+              }
+
+              careGuruRef.child(user.uid).set(userInfo).catch(function (error) {
+                console.log(error.code + error.message)
+              });
+            } else {
+               console.log('the user already exist');
+            }
+            that.parent.user = user;
+            that.parent.update();
+          }
+        )
+
+
       }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -70,7 +113,7 @@
       width: 320px;
       height: 560px;
       box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.3);
-      overflow: hidden; 
+      overflow: hidden;
     }
     .login::after {
       content: "";
@@ -119,12 +162,12 @@
       padding: 10px 20px;
       text-align: center;
     }
-    
+
     .login-info form{
       text-align: center;
       padding: 10px;
     }
-    
+
     .login-info form input::placeholder{
         color: #fff;
         text-indent: 20%;
@@ -162,7 +205,7 @@
       display: block;
       background: #fff;
     }
-    
+
     .login-info form .loginBtn {
       margin: 10px 0;
       width: 150px;
@@ -174,18 +217,18 @@
       border-radius: 4px;
       font-size: 0.9em;
     }
-    
+
     .login-info form .signinBtn:hover {
       background: #fff;
       box-shadow: 3px 3px 10px 0 rgba(255, 255, 255, 0.3), -3px -3px 10px 0 rgba(255, 255, 255, 0.3);
     }
-    
+
     .login-info form .signupBtn {
       margin: 0;
       background: #fff;
       box-shadow: 3px 3px 10px 0 rgba(255, 255, 255, 0.3), -3px -3px 10px 0 rgba(255, 255, 255, 0.3);
     }
-    
+
     .login-info #google-login {
       padding: 0px;
       margin-top: 10px;

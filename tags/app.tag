@@ -4,9 +4,8 @@
   <div class={wrap:videoPlay || loginPanel } if={!user}>  <!--prevent background scrolling -->
     <div class="shadow" show={videoPlay || loginPanel }></div>
     <home if={ page==='home' } page = {page}></home>
-    <tour if ={ page === 'tour' } page = {page}></tour>
     <faqs if ={ page === 'faqs' } page = {page}></faqs>
-    <contact if ={ page === 'contact' } page = {page}></contact>  
+    <contact if ={ page === 'contact' } page = {page}></contact>
     <logIn if={ loginPanel }></logIn>
   </div>
 
@@ -29,16 +28,19 @@
 
     route.start(true);
 
-    this.on('mount', function() {
-      firebase.auth().onAuthStateChanged(function (userObj) {
-        that.user = firebase.auth().currentUser;
-        that.update();
-      })
-    })
+
+    //  window.onload = function() {
+        firebase.auth().onAuthStateChanged(function (userObj) {
+         that.user = firebase.auth().currentUser;
+         that.update();
+        //  console.log(that.user)
+       })
+    //  }
+
   </script>
 
-  
-  
+
+
   <style>
     .wrap {
       position: fixed;

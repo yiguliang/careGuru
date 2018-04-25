@@ -20,22 +20,9 @@
 
 
 
-    <script src="./js/riot+compiler.js"></script>
-    <script src="./js/riot-router.js"></script>
-    <script src="./tags/app.tag" type="riot/tag"></script>
-    <script src="./tags/header.tag" type="riot/tag"></script>
-    <script src="./tags/home.tag" type="riot/tag"></script>
-    <script src="./tags/faqs.tag" type="riot/tag"></script>
-    <script src="./tags/contact.tag" type="riot/tag"></script>
-    <script src="./tags/logIn.tag" type="riot/tag"></script>
-    <script src="./tags/dataView.tag" type="riot/tag"></script>
-    <script src="./tags/footerWave.tag" type="riot/tag"></script>
-    <script src="./tags/videoPlay.tag" type="riot/tag"></script>
-    <script src="./tags/tour.tag" type="riot/tag"></script>
-    <script src="./tags/personPanel.tag" type="riot/tag"></script>
-    <script src="./js/highcharts.js"></script>
-    <script src="./js/jquery-3.1.1.min.js"></script>
-    <script> riot.mount("*")</script>
+
+
+    
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -50,9 +37,54 @@
         firebase.initializeApp(config);
         var careGuruRef = firebase.database().ref('/careGuru');
     </script>
+    <script src="./js/riot+compiler.js"></script>
+    <script src="./js/riot-router.js"></script>
+    <script src="./tags/app.tag" type="riot/tag"></script>
+    <script src="./tags/home-header.tag" type="riot/tag"></script>
+    <script src="./tags/home.tag" type="riot/tag"></script>
+    <script src="./tags/faqs.tag" type="riot/tag"></script>
+    <script src="./tags/contact.tag" type="riot/tag"></script>
+    <script src="./tags/logIn.tag" type="riot/tag"></script>
+    <script src="./tags/dataView.tag" type="riot/tag"></script>
+    <script src="./tags/footerWave.tag" type="riot/tag"></script>
+    <script src="./tags/footerInner.tag" type="riot/tag"></script>
+    <script src="./tags/videoPlay.tag" type="riot/tag"></script>
+    <script src="./tags/personPanel.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panel-head.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panel-product.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panel-sidebar.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panel-user-card.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome/info.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome/scene.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome/reminder.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome/info/infoPiece.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome/info/infoOpen.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome/scene/sceneBoard.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome/scene/sceneActionWarn.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelHome/scene/sceneActionfeedback.tag" type="riot/tag"></script>
+    <script src="./tags/userPanel/panelProduct/survey.tag" type="riot/tag"></script>
+    <script src="./js/highcharts.js"></script>
+    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+    <script> riot.mount("app")</script>
     <script>
         var loading = document.querySelector('.loading');
         loading.style.display = "none";
+
+        var detectScroll = function() {
+            var wrap = document.querySelectorAll('.tobeanimate');
+            window.onscroll = function () {
+                var scrollY = window.scrollY;
+                var minIndex = 0;
+                wrap.forEach(function (i, j) {
+                    if (Math.abs(i.offsetTop - scrollY) < Math.abs(wrap[minIndex].offsetTop - scrollY)) {
+                        minIndex = j;
+                        };
+                    })
+                wrap[minIndex].classList.add('slideIn');
+            }
+        }
     </script>
 
 </body>

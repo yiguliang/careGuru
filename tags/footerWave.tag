@@ -4,25 +4,13 @@
     <canvas id="wave" width ="938" height="400"></canvas>
     <form action="" class="email">
       <div class="input-wrap">
-        <input type="text" placeholder="Enter Email to Request Your Insurance" ref="emailInput">
+        <input type="text" placeholder="Enter Email to Join Our Maillist" ref="emailInput">
         <div class="icon" ref="icon">
           <i class="fa fa-paper-plane"></i>
         </div>
       </div>
     </form>
-    <footer class="footer-nav clearfix">
-      <div class="nav-left">
-        <p><span></span>CareGuru 2018 All Rights Reserved</p>
-      </div>
-      <div class="nav-right">
-        <ul>
-          <li>Take Tour</li>
-          <li>FAQs</li>
-          <li>Contact</li>
-          <li>Request Final Card</li>
-        </ul>
-      </div>
-    </footer>
+    <footerInner></footerInner>
   </div>
 
   <script>
@@ -36,7 +24,8 @@
 
       var canvas = document.getElementById('wave');
       var ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth - 15;
+      // on mobiles, there is no scroll bar while on browser, the scroll bar taks 15px width
+      window.innerWidth <= 400?canvas.width = window.innerWidth:canvas.width =  window.innerWidth - 15;
       var waves = ["#27314D","#414B60","#F07277","#F29098","#6FCFE9"]
       var i = 0;
       function draw() {
@@ -89,46 +78,12 @@
       bottom: 0;
       height: 10px;
     }
-
-    .footer-nav {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      color: #8D96A2;
-      padding: 30px 20px;
-    }
-    .footer-nav::before {
-      content: "";
-      position: absolute;
-      top: -10px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      width: 70%;
-      height: 1px;
-      border-radius: 50%;
-      background: #3C455E;
-    }
-    .footer-nav .nav-left{
-      float: left;
-
-    }    
-    .footer-nav .nav-right{
-      float: right;
-      margin-right: 20px;
-    }
-    .footer-nav .nav-right li{
-      display: inline-block;
-      margin-left: 20px;
-    }
-
     .email {
       position: absolute;
       bottom: 55%;
       left: 0;
       right: 0;
-    
+
     }
 
     .email .input-wrap {
@@ -181,5 +136,14 @@
       color: #777979;
       font-size: 0.9em;
     }
+
+
+    .footer-nav {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        padding: 30px 20px;
+      }
   </style>
 </footerWave>
