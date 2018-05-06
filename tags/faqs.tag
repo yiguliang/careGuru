@@ -3,13 +3,17 @@
   <home-header page={this.opts.page}>
     <div class="head-middle">
       <h1>FAQ</h1>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt eveniet aspernatur culpa, quis minima quae! A ipsa harum,
-        iste officiis recusandae sed eaque aliquid sint nesciunt repellendus, provident nostrum totam?</p>
+      <p>Here are the frequently asked questions you might have</p>
     </div>
   </home-header>
-  <script>
 
-  </script>
+<div class="question" each = {i in data}>
+  <h1>{i.category}</h1>
+    <h2>{i.question}</h2>
+    <h3>{i.answer}</h3>
+  </div>
+
+<script>
   this.data = [
          { category: "General health questions",
            question: "What is Considered an Emergency?",
@@ -21,11 +25,10 @@
          },
          { category: "Questions about our webpage",
            question: "Can I find all the information about my insurance card from your website?",
-           answer:"You can find more general question of "
-           question: ""
-         }
+           answer:"You can find more general question of ",
+         },
        ]
-
+  </script>
   <style>
     .header .head-middle {
       text-align: center;
