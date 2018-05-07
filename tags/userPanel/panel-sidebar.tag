@@ -4,10 +4,10 @@
       <li><img src="./img/LOGO2.png" alt="logo"></li>
       <li class={activeSideBar: currentPage === 'home'}><a href="#{this.parent.parent.user.uid}/home" onclick={goback} data-message="panelhome"><i class="fa fa-home"></i></a></li>
       <li class={activeSideBar: currentPage === 'product'}><a href="#{this.parent.parent.user.uid}/product" onclick={goback} data-message="panelproduct"><i class="fa fa-tachometer"></i></a></li>
-      <li class={activeSideBar: currentPage === 'community'}><i class="fa fa-comment"></i></li>
+      <li class={activeSideBar: currentPage === 'community'}><a href="#{this.parent.parent.user.uid}/contact" onclick={goback} data-message="panelcontact"><i class="fa fa-comment"></i></a></li>
       <li class={activeSideBar: currentPage === 'notification'}><i class="fa fa-bell"></i></li>
     </ul>
-  <script> 
+  <script>
     var that = this;
     this.on('update', function() {
       that.currentPage = that.parent.currentPage; //obtain the current page from parent tag to switch mode
@@ -16,8 +16,15 @@
     goback(e) {
       //set the homepage panel parameter to none for user to go back when they are in home panel branches
       if(this.parent.tags.hasOwnProperty(e.target.dataset.message)){
+<<<<<<< HEAD
         this.parent.tags.panelhome.homePage = false; 
         this.parent.tags.panelhome.update(); 
+=======
+        this.parent.tags.panelhome.homePage = false;
+        this.parent.tags.panelhome.update();
+      }else {
+        console.log('else: parent tag doesnt have ')
+>>>>>>> upstream/master
       }
     }
   </script>

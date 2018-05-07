@@ -86,6 +86,82 @@
   </script>
 
   <style>
+<<<<<<< HEAD
+=======
+    .tipText {
+      color: #EE7379;
+      display: flex;
+      width: 50%;
+      margin: 0 auto;
+      padding-top: 30px;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .progress {
+      display: flex;
+      width: 50%;
+      margin: 0 auto;
+      padding-top: 50px;
+      justify-content: space-around;
+    }
+    .progress > li {
+      position: relative;
+      color: #DFE2E9;
+      line-height: 20px;
+      border: 1px solid #DFE2E9;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      transition: all 1s;
+      transition-delay: 1s;
+    }
+    .progress > li:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      left: 21px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      height: 4px;
+      background-color: #DFE2E9;
+      transition: all 1s ease-in-out;
+      transition-delay: 2s;
+    }
+    .progress > li:before {
+      content: "";
+      position: absolute;
+      left: -55px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      height: 4px;
+      width: 0;
+      background-color: #DFE2E9;
+      transition: all 1s ease-in-out;
+    }
+
+    .progress > li.finish {
+      border-color: #EE7379;
+      background: #EE7379;
+      color: #fff;
+    }
+    .progress > li.finish:after {
+      width: 52px;
+      background-color: #EE7379;
+    }
+    .progress > li.finish:before {
+      width: 55px;
+      background-color: #EE7379;
+    }
+
+
+
+
+
+
+
+>>>>>>> upstream/master
     .wrap-survey {
       width: 400px;
       height: 400px;

@@ -16,7 +16,7 @@
   </home-header>
 
 
-  <!--The following is "About" page content   -   credit to Zhiping Zhang - Good Job -->   
+  <!--The following is "About" page content   -   credit to Zhiping Zhang - Good Job -->
   <div class="gallery tobeanimate">
     <div each= { item in personalInfo } class="individual" >
           <div class="main-info">

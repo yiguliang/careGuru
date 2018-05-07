@@ -29,7 +29,7 @@ input:focus {
 }
 
 button:focus {
-    outline: none;   
+    outline: none;
 }
 
 .clearfix:after {
@@ -55,7 +55,7 @@ body::-webkit-scrollbar-thumb {
 /* style for JS control */
 
 .activate {
-    animation: slideIn 1s cubic-bezier(1, 0.15, 0.23, 0.87); 
+    animation: slideIn 1s cubic-bezier(1, 0.15, 0.23, 0.87);
 }
 @keyframes slideIn {
     from {
@@ -68,7 +68,7 @@ body::-webkit-scrollbar-thumb {
     }
 }
 .deactivate {
-    animation: slideOut 1s cubic-bezier(1, 0.15, 0.23, 0.87); 
+    animation: slideOut 1s cubic-bezier(1, 0.15, 0.23, 0.87);
 }
 @keyframes slideOut {
     from {
@@ -304,7 +304,70 @@ tobeanimate {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+/* card look in panel */
+.wrap .card-shape {
+    width: 250px;
+    height: 280px;
+    background: #fff;
+    margin: 10% 50px;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 20px;
+    transition: box-shadow .3s ease-in-out;
+}
+
+.wrap .card-shape:hover {
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* bar look in panel */
+.bar-shape {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 30px auto;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.bar-shape > * {
+    margin: 5px 0;
+    background: #fff;
+    border-radius: 5px;
+    transition: all .4s;
+    padding: 10px 0px 10px 30px;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-shape > *::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: #EE7379;
+    transition: transform .4s ease-in-out;
+    border-radius: 5px;
+    transform: translateX(-2px);
+}
+
+.bar-shape > *:hover {
+    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.1);
+    transform: translateY(1px);
+}
+
+.bar-shape > *:hover:after {
+    transform: translateX(0px);
+}
+>>>>>>> upstream/master
 
 
 
@@ -340,13 +403,13 @@ tobeanimate {
         padding: 7px 5px;
         vertical-align: middle;
     }
-    
-    .wrap .sidebar ul > li.activeSideBar::after{ 
+
+    .wrap .sidebar ul > li.activeSideBar::after{
         height: 2px;
         width: 100%;
         bottom: -40%;
     }
-    
+
     .home-wrap > .wrap {
         display: block;
         height: calc(100% - 110px);
