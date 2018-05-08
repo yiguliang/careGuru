@@ -9,22 +9,22 @@
 
 <div class="question" each = {i in data}>
   <h1>{i.category}</h1>
-    <h2>{i.question}</h2>
+    <h2>{i.questions}</h2>
     <h3>{i.answer}</h3>
   </div>
 
 <script>
   this.data = [
          { category: "General health questions",
-           question: "What is Considered an Emergency?",
+           questions: "What is Considered an Emergency?",
            answer: "In general, an emergency condition is one that can permanently impair or endanger your life. Dial 911 immediately for any medical problem that appears life-threatening. Some examples of conditions that need emergency medical care include: Compound fracture, which involves a bone protruding through the skin 2. Convulsions, seizures, or loss consciousness; Deep knife wounds or gunshot wounds; Fever in a newborn less than 3 months old; Heavy, uncontrollable bleeding; Moderate to severe burns; Poisoning; Pregnancy-related problems; Serious head, neck, or back injury;Severe abdominal pain; Severe chest pain or difficulty breathing; Heart attack symptoms, such as chest pain that lasts longer than two minutes; Stroke symptoms, such as vision loss, sudden numbness, weakness, slurred speech, or confusion; Suicidal or homicidal feelings",
       },
          { category: "General health questions",
-           question: "What is Considered an Urgent Medical Condition?",
+           questions: "What is Considered an Urgent Medical Condition?",
            answer: "Accidents and falls; Cuts that don’t involve much blood but might need stitches; Breathing difficulties, such as mild to moderate asthma; Diagnostic services, including X-rays and laboratory tests; Eye irritation and redness; Fever or flu; Minor broken bones and fractures in fingers or toes; Moderate back problems; Severe sore throat or cough; Skin rashes and infections; Sprains and strains; Urinary tract infections; Vomiting, diarrhea, or dehydration",
          },
          { category: "Questions about our webpage",
-           question: "Can I find all the information about my insurance card from your website?",
+           questions: "Can I find all the information about my insurance card from your website?",
            answer:"You can find more general question of ",
          },
        ]
