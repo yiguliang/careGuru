@@ -432,26 +432,26 @@
         [
           {
             question: "Jane was so shocked and wanted to save her boyfriend.  As Jane, what should you do?",
-            descrip: "descrip 1",
-            imgurl: "sadsadada",
+            descrip: "During their spring break trip to Los Angeles, one day Jane and Thomas were going to downtown for dinner. There was a long waiting line in the restaurant, and they still decided to wait. Later two guys came here and requested to be immediately seated with rude manners to the waitress. Though the waitress was explaining to them that they had to wait in the line, they still insisted that they should be served immediately. Thomas told them that they needed to follow the restaurant rule. These two guys left angrily. Soon later, they came back and waved their baseball bats directly towards to Thomas’ head. And then, they ran away. Jane saw Thomas heavily bleeding in his nose, mouth, and head and lying on the ground.",
+            imgurl: "./img/Scenario2.png",
             sceneId: 1,
             options:
             {
               option1:
               {
-                optionName: "option 1",
-                optionLinkTo: 4,
+                optionName: "Call 911 to ask for an ambulance",
+                optionLinkTo: 2,
                 optionResults:
                 {
-                  health: +25,
+                  health: +20,
                   money: -40
                 },
                 optionWarn:
                 {
-                  warnName: "option 1 warnName",
-                  choosedFeedback: "option 1 choosedFeedback"
+                  warnName: "Here are some tips for you to consider when to call 911: 1. Shortness of breath or difficulty breathing;2. Any symptoms of a heart pain in the left arm or the jaw, sudden weakness or dizziness; 3. Signs of a stroke such as slurred speech, severe headache, weakness or numbness on one side of the face or body, or loss of consciousness; 4. Life – or limb- threatening injury. Apparently, Thomas right has already lost his consciousness at this moment, and from his heavily bleeding symptom you can have a basic conclusion that this could be a life-threatening injury. Many people are nervous about calling 911, but it’s better to be safe than sorry for your loved one.",
+                  choosedFeedback: "911 answered the call immediately and came here. They transferred Thomas to the nearest emergency room."
                 }
-              },
+              }, #end of first question and first option
               option2:
               {
                 optionName: "option 2",
