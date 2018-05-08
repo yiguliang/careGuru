@@ -1,17 +1,21 @@
 
 <reminder>
-  <div class="head-middle">
-    <h1>Personalized Health Reminder</h1>
-    <p>This reminder shows you annual health screens you need to take, and allows you to add your own items</p>
-    <p class = "tipText">Currentlt we only have data for adults</p>
-    <p>displaying info for : {personCategory}</p>
+
+  <div class="wrap">
+    <div class="head-middle">
+      <h1>Personalized Health Reminder</h1>
+      <p>This reminder shows you annual health screens you need to take, and allows you to add your own items</p>
+      <p class = "tipText">Currentlt we only have data for adults</p>
+      <p>displaying info for : {personCategory}</p>
+    </div>
+
+    <div class="reminder-item">
+      <reminder-item each={ reminderData }></reminder-item>
+      <reminder-item each={ ownReminderData }></reminder-item>
+      <input class = "add-form" type="text" placeholder="Add your own" onkeypress={ addItem }>
+    </div>
   </div>
 
-  <div class="reminder-item">
-    <reminder-item each={ reminderData }></reminder-item>
-    <reminder-item each={ ownReminderData }></reminder-item>
-    <input class = "add-form" type="text" placeholder="Add your own" onkeypress={ addItem }>
-  </div>
 
 
     <!--
@@ -119,6 +123,12 @@
 			display: block;
 		}
 
+  .wrap {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
   .head-middle {
     text-align: center;
     margin-top: 40px;
@@ -150,6 +160,8 @@
   }
 
   .reminder-item{
+    width: 100%;
+    height: 100%;
     color: #EE7379;
     text-align: center;
     line-height: 2em;
